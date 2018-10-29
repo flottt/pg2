@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# Compiled Folder Visual Studio
+Debug\*
+
+# Visual Studio Project administration
+*.vcxproj
+*.vcxproj.*
+
+# Generated output files
+array.csv
