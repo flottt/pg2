@@ -1,13 +1,15 @@
 #include <stdlib.h>
-#include "blatt2.h"
-#include "blatt3.h"
-#include "blatt35.h"
-#include "testung.h"
-#include "Cdate.h"
-#include "VLTestString.h" 
+#include "Blatt2\\blatt2.h"
+#include "Blatt3\\blatt3.h"
+#include "Blatt3\\blatt35.h"
+#include "Blatt5\\Cdate.h"
+#include "VL_Tests\\VLTestString.h"
+#include "Experimente\Zahl.h"
+#include "VL_Tests\problemConstExpr.h"
 
 int blatt_41_main();
 int blatt_42_main();
+
 
 int main() {
 
@@ -21,6 +23,7 @@ int main() {
 	printf("51: Blatt 5 Aufgabe 1: Klasse Datum anzeigen \n");
 	printf("52: Blatt 5 Aufgabe 2: Klasse Datum addieren \n");
 	printf("91: Teststring \n"); 
+	printf("92: Problem mit CONSTEXPR \n");
 	printf("Ihre Auswahl: ");
 	scanf("%i", &eingabe); 
 	system("cls");
@@ -33,7 +36,7 @@ int main() {
 	case 51: returnresult = blatt_5_a1_main(); break; 
 	case 52: returnresult = blatt_5_a2_main(); break; 
 	case 91: returnresult = testStringMain(); break;
-	case 0: returnresult = testung(); break;
+	case 92: returnresult = problemConstExpr(); break;
 	default:
 		printf("Fehler: Ungueltige Eingabe. "); 
 		if (eingabe == -1) {

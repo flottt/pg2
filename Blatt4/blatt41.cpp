@@ -42,5 +42,5 @@ int blatt_41_main() {
 	return 0;
 }
 
-//int main() { return blatt_42_main(); }
+/* int main() { return blatt_41_main(); } */
 #undef PiggyBank

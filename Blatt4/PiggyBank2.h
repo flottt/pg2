@@ -13,7 +13,7 @@ private:
 	unsigned int frei;
 
 public:
-	bool addCoins(int c1, int c10, int c50, int c100);
+	bool addCoins(unsigned int &c1, unsigned int &c10, unsigned int &c50, unsigned int &c100);
 	bool addCoins(PiggyBank2 * andere);
 	bool isEmpty();
 	bool isFull();

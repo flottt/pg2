@@ -1,5 +1,7 @@
 #include "Cdate.h"
 #include <iostream> 
+#include <Windows.h>
+
 const int Cdate::DAYS_OF_MONTH[ANZAHL_MONATE_IM_JAHR] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 bool Cdate::isSchaltjahr() {
@@ -81,6 +83,8 @@ int Cdate::workday() {
 	m -= 2 * c; 
 	m %= 7; 
 
+
+
 	return m;
 }
 
@@ -110,31 +114,32 @@ void Cdate::printoutWeekday() {
 	switch (this->presentingMode) {
 	case CdateDarstellungsart::deutsch:
 		switch (workday) {
-		case 0: std::cout << "ist ein Sonntag"; break;
-		case 1: std::cout << "ist ein Montag"; break;
-		case 2: std::cout << "ist ein Dienstag"; break;
-		case 3: std::cout << "ist ein Mittwoch"; break;
-		case 4: std::cout << "ist ein Donnerstag"; break;
-		case 5: std::cout << "ist ein Freitag"; break;
-		case 6: std::cout << "ist ein Samstag"; break;
-		default: std::cout << "gibt es nicht";
+		case 0: std::cout << " ist ein Sonntag "; break;
+		case 1: std::cout << " ist ein Montag "; break;
+		case 2: std::cout << " ist ein Dienstag "; break;
+		case 3: std::cout << " ist ein Mittwoch "; break;
+		case 4: std::cout << " ist ein Donnerstag "; break;
+		case 5: std::cout << " ist ein Freitag "; break;
+		case 6: std::cout << " ist ein Samstag "; break;
+		default: std::cout << " gibt es nicht ";
 		}
 		break;
 	case CdateDarstellungsart::englisch:
 		switch (workday) {
-		case 0: std::cout << "is a sunday"; break;
-		case 1: std::cout << "is a monday"; break;
-		case 2: std::cout << "is a tuesday"; break;
-		case 3: std::cout << "is a wednesday"; break;
-		case 4: std::cout << "is a thursday"; break;
-		case 5: std::cout << "is a friday"; break;
-		case 6: std::cout << "is a saturday"; break;
-		default: std::cout << "does not exist";
+		case 0: std::cout << " is a sunday "; break;
+		case 1: std::cout << " is a monday "; break;
+		case 2: std::cout << " is a tuesday "; break;
+		case 3: std::cout << " is a wednesday "; break;
+		case 4: std::cout << " is a thursday "; break;
+		case 5: std::cout << " is a friday "; break;
+		case 6: std::cout << " is a saturday "; break;
+		default: std::cout << " does not exist ";
 	  }
 		break; 
 	default: 
-		std::cout << "error: no presentationtype selected. ";
+		std::cout << " error: no presentationtype selected. ";
 	}
+	std::cout << std::endl;
 }
 
 void Cdate::printoutDay() {
@@ -146,14 +151,15 @@ void Cdate::printoutDay() {
 
 	switch (this->presentingMode) {
 	case CdateDarstellungsart::deutsch :
-		std::cout << "ist der " << result << " Tag des Jahres. ";
+		std::cout << " ist der " << result << " Tag des Jahres. ";
 		break;
 	case CdateDarstellungsart::englisch:
-		std::cout << "is the " << result << " day of the year. ";
+		std::cout << " is the " << result << " day of the year. ";
 		break; 
 	default:
-		std::cout << "error: no presentationtype selected. ";
+		std::cout << " error: no presentationtype selected. ";
 	}
+	std::cout << std::endl;
 }
 
 void Cdate::adddays(int tage) {
@@ -163,7 +169,7 @@ void Cdate::adddays(int tage) {
 
 int blatt_5_a1_main() {
 	std::cout << "printout for date1\n";
-	Cdate date1(1, 2, 1980); //(day,month,year)
+	Cdate date1(1, 2, 80); //(day,month,year)
 	date1.printout();
 	date1.printoutDay();
 	date1.printoutWeekday();
@@ -178,7 +184,7 @@ int blatt_5_a1_main() {
 }
 
 int blatt_5_a2_main() {
-	Cdate date1(1, 12, 1980); //(day,month,year)
+	Cdate date1(1, 12, 80); //(day,month,year)
 	date1.printout();
 	date1.printoutDay();
 	date1.printoutWeekday();
@@ -189,3 +195,5 @@ int blatt_5_a2_main() {
 	date1.printoutWeekday();
 	return 0;
 }
+
+/* int main() { int returnresult = blatt_5_a1_main(); system("pause");  return returnresult; } */

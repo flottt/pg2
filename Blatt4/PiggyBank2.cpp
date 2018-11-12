@@ -33,7 +33,7 @@ int PiggyBank::loot(int * muenzen) {
 	return cent;
 }
 
-bool PiggyBank::addCoins(int c1, int c10, int c50, int c100) {
+bool PiggyBank::addCoins(unsigned int &c1, unsigned int &c10, unsigned int &c50, unsigned int &c100) {
 	int summe = c1 + c10 + c50 + c100;
 	if (summe > this->frei) return false;
 	this->frei -= summe;

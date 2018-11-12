@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <Windows.h>
 
 typedef struct {
 	int health = 100; 
@@ -9,7 +10,8 @@ typedef struct {
 
 constexpr int xxx(int a, int b) {
 	if (b == 0) return 0; 
-	else return a % b;
+	printf("%i", a);
+	return a % b;
 }
 
 constexpr int getAge(Mensch &mensch) {
@@ -25,7 +27,7 @@ int leseIntZahl(const char * const text) {
 	return result; 
 }
 
-int testung() {
+int problemConstExpr() {
 	printf("Testung\n");
 	int x = leseIntZahl("Zahl 1 eingeben"); 
 	int y = leseIntZahl("Zahl 2 eingeben");
@@ -43,3 +45,7 @@ int testung() {
 
 	return 0;
 }
+
+/* int main() { testung(); system("pause"); return 0; } */
+
+//PC-LINT <- syntax-checker

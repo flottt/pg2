@@ -1,0 +1,9 @@
+﻿  main.cpp
+c:\users\ott\c\source\repos\pg2\uebung2\experimente\zahl.h(12): warning C4290: C++-Ausnahmespezifikation ignoriert, es sei denn, es wird angezeigt, dass eine Funktion nicht __declspec(nothrow) ist
+c:\users\ott\c\source\repos\pg2\uebung2\main.cpp(28): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: Siehe Deklaration von "scanf"
+  problemConstExpr.cpp
+c:\users\ott\c\source\repos\pg2\uebung2\vl_tests\problemconstexpr.cpp(26): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: Siehe Deklaration von "scanf"
+  Code wird generiert...
+  Uebung2.vcxproj -> C:\Users\Ott\C\source\repos\PG2\Debug\Uebung.exe
