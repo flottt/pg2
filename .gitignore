@@ -32,7 +32,9 @@
 *.app
 
 # Compiled Folder Visual Studio
-Debug\*
+[dD]ebug*\*
+[dD]ebug*/*
+[dD]ebug*/*/*
 
 # Visual Studio Project administration
 *.vcxproj
@@ -40,3 +42,12 @@ Debug\*
 
 # Generated output files
 array.csv
+/Debug/Uebung.tlog/CL.command.1.tlog
+/Debug/Uebung.tlog/CL.read.1.tlog
+/Debug/Uebung.tlog/CL.write.1.tlog
+/Debug/Uebung.tlog/link.command.1.tlog
+/Debug/Uebung.tlog/link.read.1.tlog
+/Debug/Uebung.tlog/link.write.1.tlog
+/Debug/Uebung2.log
+/Debug/vc141.idb
+/Debug/vc141.pdb
