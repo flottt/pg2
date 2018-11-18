@@ -7,10 +7,12 @@
 #include "Experimente\Zahl.h"
 #include "VL_Tests\problemConstExpr.h"
 #include "VL_Tests\VLtemplating.h"
+#include "VL_Tests\VLTestTemplateOfTemplate.h"
 
 int blatt_41_main();
 int blatt_42_main();
 int blatt_61_main();
+int blatt_63_main();
 int blatt_71_main();
 int blatt_72_main();
 
@@ -26,11 +28,13 @@ int main() {
 	printf("51: Blatt 5 Aufgabe 1: Klasse Datum anzeigen \n");
 	printf("52: Blatt 5 Aufgabe 2: Klasse Datum addieren \n");
 	printf("61: Blatt 6: Queue \n");
+	printf("63: Blatt 6: Queue \n");
 	printf("71: Blatt 7: Quicksort-Klasse \n");
 	printf("72: Blatt 7: Quicksort-Template-Klasse \n");
 	printf("91: Teststring \n"); 
 	printf("92: Problem mit CONSTEXPR \n"); 
 	printf("93: Test-Templating \n"); 
+	printf("94: Template-Template \n");
 
 	printf("Ihre Auswahl: ");
 	scanf("%i", &eingabe); 
@@ -44,11 +48,13 @@ int main() {
 	case 51: returnresult = blatt_5_a1_main(); break; 
 	case 52: returnresult = blatt_5_a2_main(); break; 
 	case 61: returnresult = blatt_61_main(); break; 
+	case 63: returnresult = blatt_63_main(); break; 
 	case 71: returnresult = blatt_71_main(); break; 
 	case 72: returnresult = blatt_72_main(); break; 
 	case 91: returnresult = testStringMain(); break; 
 	case 92: returnresult = problemConstExpr(); break; 
 	case 93: returnresult = templating_main(); break; 
+	case 94: returnresult = vlTestTemplateTemplate_main(); break;
 	default:
 		printf("Fehler: Ungueltige Eingabe. "); 
 		if (eingabe == -1) {
