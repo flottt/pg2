@@ -1,6 +1,7 @@
 #include "Queue.h"
 #include <Windows.h>
-#define queue Queue<int>
+
+using queue = Queue<int, 'i'>;
 
 int blatt_61_main() {
 	constexpr int max = 100;

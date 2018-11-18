@@ -23,7 +23,6 @@ private:
 	/**replaces all objects by the given queue's objects. */
 	void queueInitCopy(const Queue_T &);
 
-
 public:
 	/**constructor for a new queue with given capacity. */
 	Queue(const int capacity); 
