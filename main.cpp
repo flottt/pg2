@@ -9,6 +9,7 @@
 #include "VL_Tests\VLtemplating.h"
 #include "VL_Tests\VLTestTemplateOfTemplate.h"
 #include "VL_Tests\Vererbung\ERB_MannFrau.h"
+#include "VL_Tests\Vererbung\ERB_Gitarre.h"
 
 int blatt_41_main();
 int blatt_42_main();
@@ -36,7 +37,8 @@ int main() {
 	printf("92: Problem mit CONSTEXPR \n"); 
 	printf("93: Test-Templating \n"); 
 	printf("94: Template-Template \n");
-	printf("95: Vererbung \n");
+	printf("95: Vererbung Mensch \n");
+	printf("96: Vererbung Musik \n");
 
 	printf("Ihre Auswahl: ");
 	scanf("%i", &eingabe); 
@@ -58,6 +60,7 @@ int main() {
 	case 93: returnresult = templating_main(); break; 
 	case 94: returnresult = vlTestTemplateTemplate_main(); break;
 	case 95: returnresult = vlVererbung_main(); break; 
+	case 96: returnresult = musik_main(); break; 
 	default:
 		printf("Fehler: Ungueltige Eingabe. "); 
 		if (eingabe == -1) {
