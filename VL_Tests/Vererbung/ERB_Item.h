@@ -11,7 +11,8 @@ protected:
 
 public: 
 	int id; 
-	int getId(); 
+	int getId(void) const;  
+	void debugDump(int byteAnzahl = 0, int step = 1);
 };
 
 

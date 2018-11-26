@@ -5,8 +5,9 @@
 class Gitarre : public Saiteninstrument {
 protected: 
 public: 
-	~Gitarre();
 	Gitarre(); 
+	Gitarre(const int saitenAnzahl, const char * name); 
+	~Gitarre();
 	using Saiteninstrument::name;
 	
 };

@@ -6,9 +6,11 @@ class Saiteninstrument : private Musikinstrument {
 protected: 
 	int anzahlSaiten; 
 
-	Saiteninstrument(const int anzahlSaiten, const char * name); 
+	Saiteninstrument(const int anzahlSaiten, const char * name, const char * hersteller = "unknown fabricator"); 
 	~Saiteninstrument(); 
 	using Musikinstrument::name; 
+public: 
 	using Item::getId; 
+	using Item::debugDump;
 };
 #endif // __ERB_Musik_Saiteninstrument_H__
