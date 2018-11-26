@@ -2,10 +2,9 @@
 #include <stdio.h> 
 #include <stdlib.h>
 int VLTestString::wert = 10;
+inline void operatorPlusPlusTest();
 
-
-VLTestString::VLTestString(int x) { //default parameter darf in definition nicht stehen.
-	this->iii = x;
+VLTestString::VLTestString(int x) : iii(x), plusplus(0) { //default parameter darf in definition nicht stehen.
 	printf("Creating Teststring %5i.   ..... p=%p \n", x, this);
 }
 
@@ -13,6 +12,18 @@ VLTestString::~VLTestString() {
 	VLTestString::wert++;
 	printf("Destructing %3i: iii = %5i   .....  p=%p \n", VLTestString::wert, this->iii, this);
 	this->iii = -1; 
+}
+
+VLTestString & VLTestString::operator++() {
+	this->plusplus++; 
+	printf("operator++ [iii = %i] ist jetzt bei %i \n", this->iii, this->plusplus);
+	return *this; 
+}
+
+VLTestString & VLTestString::operator++(int x) {
+	this->plusplus += 100;
+	printf("operator++(x=%i) [iii = %i] ist jetzt bei %i \n", x, this->iii, this->plusplus);
+	return *this;
 }
 
 inline int VLTestString::get() { return this->iii; }
@@ -45,7 +56,33 @@ void testExecute() {
 	printf("start addingeq\n");
 	s1 += s3;
 	printf("end addingeq\n");
+
+	operatorPlusPlusTest(); 
+
 	printf("Ende\n");
+}
+
+inline void operatorPlusPlusTest() {
+	printf("\n---\n\nstarte Operatortest ++ \n\n");
+	int kk; 
+	VLTestString st = 888; 
+	++st;
+	++st;
+	st++;
+	st++;
+	printf("vorher\n");
+	printf("Pointer %p \n", &(st++));
+	//es wird erst die Operation ausgefuehrt, danach das Printing. 
+	printf("nachher\n");
+
+	kk = 10;
+	printf("kk war 10; kk++ = %i \n", kk++);
+	//es wird erst das Printing ausgefuehrt, dann die Operation. 
+	kk = 20;
+	printf("kk war 20; ++kk = %i \n", ++kk);
+
+	printf("end Operatortest ++ \n---\n\n");
+
 }
 
 int testStringMain() {
