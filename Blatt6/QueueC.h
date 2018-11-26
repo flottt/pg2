@@ -94,12 +94,19 @@ int Queue_T::queueEmpty() {
 QUEUE_TEMPLATE_HEADER
 void print(Queue_T & that) {
 	for (int i = 0; i < that.size; i++) {
+		char formatstring[4] = "%i ";
+		formatstring[1] = PRINTF_EXPR; 
+		printf(formatstring, that.liste[(that.head + i) % that.capacity]);
+	}
+	printf("\n");
+}
+QUEUE_TEMPLATE_HEADER
+void printLarge(Queue_T & that) {
+	for (int i = 0; i < that.size; i++) {
 		char formatstring[12] = "[%i] = %i \n";
 		formatstring[8] = PRINTF_EXPR; 
 		printf(formatstring, i, that.liste[(that.head + i) % that.capacity]);
 	}
-
-
 }
 
 QUEUE_TEMPLATE_HEADER

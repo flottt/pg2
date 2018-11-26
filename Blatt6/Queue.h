@@ -65,6 +65,10 @@ public:
 	QUEUE_TEMPLATE_HEADER  //ohne template-deklaration geht es nicht bei friend. 
 	friend void print(Queue_T & that);
 	
+	/**prints the queue to cout. */
+	QUEUE_TEMPLATE_HEADER  //ohne template-deklaration geht es nicht bei friend. 
+	friend void printLarge(Queue_T & that);
+	
 	/**add the given data into the queue. see enqueue(TYPE &) */
 	Queue_T & operator+ (TYPE data);
 
