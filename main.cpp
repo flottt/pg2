@@ -17,6 +17,9 @@ int blatt_61_main();
 int blatt_63_main();
 int blatt_71_main();
 int blatt_72_main();
+int stringBuffer_main();
+int threadTest_main();
+int musikEGitarre_main();
 
 int main() {
 
@@ -39,7 +42,9 @@ int main() {
 	printf("94: Template-Template \n");
 	printf("95: Vererbung Mensch \n");
 	printf("96: Vererbung Musik \n");
-
+	printf("97: StringBufferTest \n"); 
+	printf("98: ThreadTest \n"); 
+	printf("99: Vererbung Musik E-Gitarre \n"); 
 	printf("Ihre Auswahl: ");
 	scanf("%i", &eingabe); 
 	system("cls");
@@ -61,6 +66,9 @@ int main() {
 	case 94: returnresult = vlTestTemplateTemplate_main(); break;
 	case 95: returnresult = vlVererbung_main(); break; 
 	case 96: returnresult = musik_main(); break; 
+	case 97: returnresult = stringBuffer_main(); break; 
+	case 98: returnresult = threadTest_main(); break; 
+	case 99: returnresult = musikEGitarre_main(); break;
 	default:
 		printf("Fehler: Ungueltige Eingabe. "); 
 		if (eingabe == -1) {
