@@ -22,9 +22,9 @@ void Item::debugDump(int byteAnzahl, int step) {
 		if (i % 2 == 0) printf(" "); 
 		char cc = *(((char *)this) + (i * step));
 		line[i % 32] = (cc < ' ' ? '.' : cc); 
-		printf("%02x", cc & 0xFF);
+		printf("%02hhX", cc);
 		if (i % 32 == 31) {
-			printf("  |  %32.32s \n", line); 
+			printf("  |  %-32.32s \n", line); 
 			for (int j = 0; j < 32; j++) line[j] = '\0';
 		}
 	}
