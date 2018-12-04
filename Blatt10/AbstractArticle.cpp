@@ -19,6 +19,7 @@ AbstractArticle::AbstractArticle(const AbstractArticle & that) : id(that.id), st
 	this->descr[ARTICLE_MAX_DESCRIPTION_LENGTH] = '\0';
 }
 
+/* Destruktor: next wird nicht hier, sondern ueber die Liste geloescht. */
 AbstractArticle::~AbstractArticle() {}
 
 void AbstractArticle::load_checkOrFailString(char * text, const char * propertyname, const int TEXT_CAPACITY) {

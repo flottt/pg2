@@ -17,10 +17,51 @@ void AbstractList::printout() {
 	}
 }
 
-void AbstractList::searchid() {
+void AbstractList::printAskId() const {
+	int id = -1; 
+	std::cout << "Which id are you looking for: ";
+	char line[64];
+	while (std::cin.readsome(line, 63) > 0); 
+	std::cin >> id; 
+	if (std::cin.fail()) {
+		std::cin.clear(); 
+		std::cout << "Error: could not read id" << std::endl; 
+		return;
+	}
+
+	AbstractArticle * article = this->searchid(id); 
+	if (article == nullptr) {
+		std::cout << "Error: There is no Article with id " << id << std::endl; 
+	} else {
+		article->printout();
+	}
 }
 
-AbstractArticle * AbstractList::searchdescr() {
+AbstractArticle * AbstractList::searchid(const int id) const {
+	AbstractArticle * article = first; 
+	while (article != nullptr) {
+		if (article->id == id) return article; 
+		article = article->next; 
+	}
+	return nullptr; 
+}
+
+AbstractArticle * AbstractList::searchdescr(const char * descr) const {
+	register char cc1, cc2; 
+	AbstractArticle * article = first;
+	while (article != nullptr) {
+		for(int i = 0; 1; ++i) {
+			cc1 = descr[i]; 
+			cc2 = article->descr[i]; 
+			if (cc1 == '\0' && cc2 == '\0') {
+				return article;
+			} else if (cc1 != cc2) {
+				//this includes the case, that one string terminates and the other continues. 
+				break;
+			}
+		}
+		article = article->next;
+	}
 	return nullptr;
 }
 
@@ -36,9 +77,9 @@ void AbstractList::addelement(AbstractArticle & neuerArticle) {
 	}
 }
 
+/* Destruktor ueber Iteration. */
 AbstractList::~AbstractList() {
-	delete first; 
-	first = nullptr;
+	this->removeAll();
 }
 
 void AbstractList::loadfromfile(const char * filename) {
@@ -88,7 +129,13 @@ void AbstractList::savetofile(const char * filename) {
 }
 
 void AbstractList::removeAll() {
-	delete first; 
+	AbstractArticle * article = nullptr, * next = this->first;
+	
+	while (next != nullptr) {
+		article = next; 
+		next = next->next;
+		delete article;
+	}
 	first = nullptr; 
 }
 

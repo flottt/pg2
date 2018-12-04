@@ -63,11 +63,15 @@ int blatt_10_menu_main() {
 		std::cout << "41: Insert new food " << std::endl;
 		std::cout << "42: Insert new book " << std::endl;
 		std::cout << "43: Insert new material " << std::endl;
+		std::cout << "51: Show food with given id " << std::endl;
+		std::cout << "52: Show book with given id " << std::endl;
+		std::cout << "53: Show material with given id " << std::endl;
 
-
+		std::cout << "Your choice: ";
 		while (std::cin.readsome(line, 63) > 0);
 		eingabe = -1; 
-		std::cin >> eingabe; 
+		std::cin >> eingabe;
+		std::cout << std::endl << std::endl << std::endl << std::endl;
 		switch (eingabe) {
 		case 0: return 0; 
 		case 11: listf.printout(); break;
@@ -82,8 +86,13 @@ int blatt_10_menu_main() {
 		case 41: listf.input(); break;
 		case 42: listb.input(); break;
 		case 43: listm.input(); break;
-
+		case 51: listf.printAskId(); break; 
+		case 52: listb.printAskId(); break; 
+		case 53: listm.printAskId(); break; 
+		default: std::cout << "Illegal command ignored." << std::endl;
 		}
 		std::cout << "------ " << std::endl << std::endl;
 	}
 }
+
+//int main() { return blatt_10_menu_main(); }

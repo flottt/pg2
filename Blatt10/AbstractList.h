@@ -19,8 +19,10 @@ public:
 
 	void input(); 
 	virtual void printout(); 
-	virtual void searchid(); 
-	AbstractArticle * searchdescr(); 
+	void printAskId() const;
+
+	AbstractArticle * searchid(const int id) const; 
+	AbstractArticle * searchdescr(const char * descr) const;
 	virtual void addelement(AbstractArticle &); 
 
 };

@@ -11,10 +11,19 @@ private:
 	friend class AbstractList;
 	AbstractArticle * next; 
 protected: 
+	/** The description of the article should be unique, but this is not checked yet. */
 	char descr[ARTICLE_MAX_DESCRIPTION_LENGTH + 1]; 
+
+	/** the id should be unique, but this is not checked yet. */
 	int id; 
+
+	/** the amount availlable. */
 	int stock; 
+
+	/** the minimum amount, which should be availlable. */
 	int minstock; 
+
+	/** the price per unit. */
 	float price; 
 
 protected: 
