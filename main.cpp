@@ -20,6 +20,7 @@ int blatt_72_main();
 int blatt_81_main(); 
 int blatt_82_main(); 
 int blatt_83_main(); 
+int blatt_91_main(); 
 int blatt_10_main();
 int blatt_10_menu_main();
 int stringBuffer_main();
@@ -44,6 +45,7 @@ int main() {
 	printf("81: Blatt 8: Verkettete Liste \n"); 
 	printf("82: Blatt 8: Verkettete Liste mit Template \n"); 
 	printf("83: Blatt 8: Verkettete Liste mit Template mit Klasse student \n"); 
+	printf("89: Blatt 9: Grafik-Billig-Objekte \n"); 
 	printf("10: Blatt 10: Storage-Verwaltung \n");
 	printf("11: Blatt 10: Storage-Verwaltung mit Menue \n");
 	printf("91: Teststring \n"); 
@@ -75,6 +77,7 @@ int main() {
 	case 83: returnresult = blatt_83_main(); break; 
 	case 10: returnresult = blatt_10_main(); break; 
 	case 11: returnresult = blatt_10_menu_main(); break; 
+	case 89: returnresult = blatt_91_main(); break;
 	case 91: returnresult = testStringMain(); break; 
 	case 92: returnresult = problemConstExpr(); break; 
 	case 93: returnresult = templating_main(); break; 
