@@ -105,10 +105,20 @@ int blatt_92_main(GfxObject ** obj, char screen[SCREEN_HEIGHT][SCREEN_WIDTH]) {
 		case 'b':
 			drawBorder(screen);
 			break; 
+		case 'c': 
+			std::cout << "Neues Zeichen eingeben: "; 
+			std::cin >> input; 
+			obj[aktivIndex]->setChar(input); 
+			obj[aktivIndex]->draw(screen);
+			break; 
 		case (char)27: 
 			return 0; 
 		}
 		//system("cls");
 		printScreen(screen);
 	}
+}
+
+int main() {
+	return blatt_91_main();
 }

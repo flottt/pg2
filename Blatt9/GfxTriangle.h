@@ -4,6 +4,9 @@
 
 class GfxTriangle : public GfxObject {
 protected: 
+	/** x = linkeste Position des Dreiecks. (bei unterem Schenkel) */
+	/** y = oberste Position des Dreiecks. (bei Spitze) */
+	/** Hoehe des Dreiecks. */
 	int h; 
 
 public: 

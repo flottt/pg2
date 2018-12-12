@@ -33,3 +33,7 @@ void GfxObject::makeLarger(int diff, char screen[SCREEN_HEIGHT][SCREEN_WIDTH]) {
 	this->makeLarger(diff); 
 	this->draw(screen);
 }
+
+void GfxObject::setChar(char cc) {
+	this->charRepr = cc; 
+}

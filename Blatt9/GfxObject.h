@@ -23,6 +23,7 @@ public:
 
 	virtual void makeLarger(int diff) = 0; 
 	void makeLarger(int diff, char screen[SCREEN_HEIGHT][SCREEN_WIDTH]);
+	void setChar(char cc); 
 };
 
 
