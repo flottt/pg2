@@ -119,6 +119,4 @@ int blatt_92_main(GfxObject ** obj, char screen[SCREEN_HEIGHT][SCREEN_WIDTH]) {
 	}
 }
 
-int main() {
-	return blatt_91_main();
-}
+/* int main() {return blatt_91_main();}*/
