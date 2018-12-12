@@ -26,6 +26,7 @@ int blatt_10_menu_main();
 int stringBuffer_main();
 int threadTest_main();
 int musikEGitarre_main();
+int stl_main(); 
 
 int main() {
 
@@ -57,6 +58,7 @@ int main() {
 	printf("97: StringBufferTest \n"); 
 	printf("98: ThreadTest \n"); 
 	printf("99: Vererbung Musik E-Gitarre \n"); 
+	printf("19: Standard-Library \n");
 	printf("Ihre Auswahl: ");
 	scanf("%i", &eingabe); 
 	system("cls");
@@ -87,6 +89,7 @@ int main() {
 	case 97: returnresult = stringBuffer_main(); break; 
 	case 98: returnresult = threadTest_main(); break; 
 	case 99: returnresult = musikEGitarre_main(); break;
+	case 19: returnresult = stl_main(); break; 
 	default:
 		printf("Fehler: Ungueltige Eingabe. "); 
 		if (eingabe == -1) {
