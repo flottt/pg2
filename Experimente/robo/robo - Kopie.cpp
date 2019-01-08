@@ -88,24 +88,20 @@ void readFile(const char * FILENAME) {
 inline void pushToStack(int * stack, int distanz, int feldPtr) {
 	route[feldPtr] = distanz; 
 	distanz %= 4;
-	int index = distanz * (2 * (MAPHEIGHT + MAPWIDTH)); 
-	stack[index]++; 
-	int neueAnzahl = stack[index]; 
-	stack[index + neueAnzahl] = feldPtr; 
+	stack += distanz * (2 * (MAPHEIGHT + MAPWIDTH));
+	++(*stack);
+	*(stack + 1 + (*stack)) = feldPtr; 
 }
 
 inline int popFromStack(int * stack, int distanz) {
 	distanz %= 4; 
-	int index = distanz * (2 * (MAPHEIGHT + MAPWIDTH)); 
+	stack += (distanz * (2 * (MAPHEIGHT + MAPWIDTH)));
 
-	if (stack[index] == 0) {
+	if (*stack == 0) {
 		return -1; 
-	} else {
-		int alteAnzahl = stack[index]; 
-		stack[index]--; 
-		index += alteAnzahl; 
-		return stack[index]; 
 	}
+	--(*stack); 
+	return *(stack + 2 + *stack);
 }
 
 /** test if any stack has a content. */
@@ -117,17 +113,9 @@ inline bool hasAnyStack(int * stack) {
 	return false; 
 }
 
-inline void checkeNachbarfeld(
-	            int * fetterstack, 
-	            const int nextfeldzeiger, 
-	            int & nextfeldflags, 
-	            const int nextfeldflagmask, 
-	            const int requirenextfeldflagmask, 
-	            int distanzInklMetrik) {
-	int stackIndex = 0; 
-	
-	if (((nextfeldflags & requirenextfeldflagmask) == requirenextfeldflagmask) && (map[nextfeldzeiger] != '#')) {
-		nextfeldflags |= nextfeldflagmask;
+inline void checkeNachbarfeld(int * fetterstack, const int nextfeldzeiger, int * nextfeldflags, const int nextfeldflagmask, const int requirenextfeldflagmask, int distanzInklMetrik) {
+	if (((*nextfeldflags & requirenextfeldflagmask) == requirenextfeldflagmask) && (map[nextfeldzeiger] != '#')) {
+		*nextfeldflags |= nextfeldflagmask;
 		if (route[nextfeldzeiger] > distanzInklMetrik) {
 			pushToStack(fetterstack, distanzInklMetrik, nextfeldzeiger);
 		}
@@ -136,28 +124,23 @@ inline void checkeNachbarfeld(
 
 inline void routeTo_berechneDistanzen(feld ziel) {
 	//resette route array
-	int mapIndex = 0; 
-	int mapSize = MAPHEIGHT * MAPWIDTH; 
-
-	//jeweils erst size, dann content
-	int fetterstack[4 * (2 * (MAPHEIGHT + MAPWIDTH))];
-	for (int i = 0; i < 4 * (2 * (MAPHEIGHT + MAPWIDTH)); i++) { 
-		fetterstack[i] = 0; 
-	}
+	feld const * mapPtr = map; 
+	routefeld const * const routePtrEnde = route + MAPHEIGHT * MAPWIDTH; 
 	
+	//jeweils erst size, dann content
+	int fetterstack[4 * (2 * (MAPHEIGHT + MAPWIDTH))] = { 0 };
 	routefeld distanz = 0; 
 
-	for (int index = 0; index < mapSize; index++) {
-		if (map[index] == ziel) {
-		  pushToStack(fetterstack, distanz, index); 
+	for (routefeld * routePtr = route; routePtr < routePtrEnde; ++routePtr, ++mapPtr) {
+		if (*mapPtr == ziel) {
+		  pushToStack(fetterstack, distanz, mapPtr - map); 
 
 		} else {
-			route[index] = 250; 
+		  *routePtr = 250; 
 		}
 	}
 
-	while (1) {
-		if (!hasAnyStack(fetterstack)) return; 
+	while (hasAnyStack(fetterstack)) {
 		while (1) {
 			int feldzeiger = popFromStack(fetterstack, distanz);
 			if (feldzeiger == -1) break;
@@ -165,14 +148,14 @@ inline void routeTo_berechneDistanzen(feld ziel) {
 			if (route[feldzeiger] != distanz) continue;
 			int nextfeldflags = 0;
 
-			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_OBEN(), nextfeldflags, NEXTFLAG_OBEN, 0, distanz + 2);
-			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_UNTEN(), nextfeldflags, NEXTFLAG_UNTEN, 0, distanz + 2);
-			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_LINKS(), nextfeldflags, NEXTFLAG_LINKS, 0, distanz + 2);
-			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_RECHTS(), nextfeldflags, NEXTFLAG_RECHTS, 0, distanz + 2);
-			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_OBENRECHTS(), nextfeldflags, 0, NEXTFLAG_OBEN | NEXTFLAG_RECHTS, distanz + 3);
-			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_UNTENRECHTS(), nextfeldflags, 0, NEXTFLAG_UNTEN | NEXTFLAG_RECHTS, distanz + 3);
-			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_OBENLINKS(), nextfeldflags, 0, NEXTFLAG_OBEN | NEXTFLAG_LINKS, distanz + 3);
-			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_UNTENLINKS(), nextfeldflags, 0, NEXTFLAG_UNTEN | NEXTFLAG_LINKS, distanz + 3);
+			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_OBEN(), &nextfeldflags, NEXTFLAG_OBEN, 0, distanz + 2);
+			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_UNTEN(), &nextfeldflags, NEXTFLAG_UNTEN, 0, distanz + 2);
+			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_LINKS(), &nextfeldflags, NEXTFLAG_LINKS, 0, distanz + 2);
+			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_RECHTS(), &nextfeldflags, NEXTFLAG_RECHTS, 0, distanz + 2);
+			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_OBENRECHTS(), &nextfeldflags, 0, NEXTFLAG_OBEN | NEXTFLAG_RECHTS, distanz + 3);
+			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_UNTENRECHTS(), &nextfeldflags, 0, NEXTFLAG_UNTEN | NEXTFLAG_RECHTS, distanz + 3);
+			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_OBENLINKS(), &nextfeldflags, 0, NEXTFLAG_OBEN | NEXTFLAG_LINKS, distanz + 3);
+			checkeNachbarfeld(fetterstack, feldzeiger + NEXTDIFF_UNTENLINKS(), &nextfeldflags, 0, NEXTFLAG_UNTEN | NEXTFLAG_LINKS, distanz + 3);
 		}
 		distanz++;
 	}
