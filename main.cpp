@@ -28,6 +28,8 @@ int threadTest_main();
 int musikEGitarre_main();
 int stl_main(); 
 int robo_main(); 
+int msfail_main();
+int blatt121_main(int argc = 0, char *argv[] = nullptr); 
 
 int main() {
 
@@ -61,6 +63,9 @@ int main() {
 	printf("99: Vererbung Musik E-Gitarre \n"); 
 	printf("19: Standard-Library \n");
 	printf("88: Robo-Test \n");
+	printf("87: msfail-Test \n");
+	printf("86: Blatt 11: Aufgabe 1: Employee-Datenbank \n");
+	
 	printf("Ihre Auswahl: ");
 	scanf("%i", &eingabe); 
 	system("cls");
@@ -93,6 +98,8 @@ int main() {
 	case 99: returnresult = musikEGitarre_main(); break;
 	case 19: returnresult = stl_main(); break; 
 	case 88: returnresult = robo_main(); break; 
+	case 87: returnresult = msfail_main(); break; 
+	case 86: returnresult = blatt121_main(); break; 
 	default:
 		printf("Fehler: Ungueltige Eingabe. "); 
 		if (eingabe == -1) {
@@ -102,6 +109,7 @@ int main() {
 		}
 	  printf("Programm wird beendet. \n");
 	}
+	std::cout << " -- END OF FILE -- " << std::endl;
 	system("pause");
 	return returnresult;
 }
