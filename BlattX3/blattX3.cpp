@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <iostream>
-#include<string.h>
+#include <string>
 
 using namespace std;
 
@@ -9,7 +9,7 @@ using namespace std;
 #include"employeeadmin.h"
 
 
-int blatt121_main(int argc = 0, char *argv[] = nullptr)
+int blatt123_main(int argc = 0, char *argv[] = nullptr)
 {
 	Employee e1, e2, e3, e4;
 	e1.lastName = strdup("Meier");
@@ -17,7 +17,7 @@ int blatt121_main(int argc = 0, char *argv[] = nullptr)
 	e1.salary = 1;
 	e2.lastName = strdup("Mueller");
 	e2.residence = strdup("Oldenburg");
-	e2.salary = 2;
+	e2.salary = 52;
 	e3.lastName = strdup("Niemand");
 	e3.residence = strdup("Berlin");
 	e3.salary = 3;
@@ -25,17 +25,16 @@ int blatt121_main(int argc = 0, char *argv[] = nullptr)
 	e4.residence = strdup("Hamburg");
 	e4.salary = 4;
 
-	
+
 	cout << "Printout for vector with composition" << endl << endl;
-	
 	EmployeeAdmin ea;
-	
 	ea.addEmployee(e1);
 	ea.addEmployee(e2);
 	ea.addEmployee(e3);
-	
+
 	ea.printEmployeeList();
 	cout << "Num of employees: " << ea.numEmployees() << endl << endl;
+
 	ea.setSalaryEmployee("Meier", 1000);
 	ea.setSalaryEmployee("Mueller", 2000);
 	ea.setSalaryEmployee("Maurer", 3000);
@@ -43,8 +42,7 @@ int blatt121_main(int argc = 0, char *argv[] = nullptr)
 
 	ea.printEmployeeList();
 	cout << "Num of Employees: " << ea.numEmployees() << " cause costs of: " << ea.calculateCosts() << endl << endl;
-	cout << "----"; 
-	
+
 	ea.dismissEmployee("Mueller");
 	ea.printEmployeeList();
 	cout << "Num of Employees: " << ea.numEmployees() << " cause costs of: " << ea.calculateCosts() << endl << endl;
@@ -55,8 +53,8 @@ int blatt121_main(int argc = 0, char *argv[] = nullptr)
 
 	ea.printEmployeeList();
 	cout << "Num of Employees: " << ea.numEmployees() << " cause costs of: " << ea.calculateCosts() << endl << endl;
-	
+
 	return 0;
 }
 
-int main() { int returnresult = blatt121_main(); system("pause"); return returnresult; }
+int main() { int returnresult = blatt123_main(); system("pause"); return returnresult; }
